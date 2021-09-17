@@ -1,4 +1,12 @@
-import { BehaviorSubject, Observable, Observer } from "rxjs";
+import {
+  BehaviorSubject,
+  distinctUntilChanged,
+  distinctUntilKeyChanged,
+  Observable,
+  Observer,
+  of,
+  pluck,
+} from "rxjs";
 export interface Action {
   type: string;
   payload?: any;
@@ -11,6 +19,10 @@ export default class RxJsStore<T> {
   constructor(reducer: (state: T, action: Action) => T, initialState: T) {
     this._state = new BehaviorSubject(initialState);
     this._reducer = reducer;
+  }
+
+  select<K extends keyof T>(key: K): Observable<T[K]> {
+    return this._state.pipe(distinctUntilKeyChanged(key), pluck(key));
   }
 
   subscribe(callback: (state: T) => void) {

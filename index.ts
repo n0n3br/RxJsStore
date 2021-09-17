@@ -2,17 +2,19 @@ import RxJsStore, { Action } from "./src/RxJsStore";
 
 interface State {
   counter: number;
+  name: string;
 }
 
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
+    case "CHANGE_NAME": {
+      return { ...state, name: action.payload };
+    }
     case "INCREMENT": {
-      state.counter += action.payload;
-      return state;
+      return { ...state, counter: state.counter + action.payload };
     }
     case "DECREMENT": {
-      state.counter--;
-      return state;
+      return { ...state, counter: state.counter + 1 };
     }
     default:
       return state;
@@ -21,25 +23,14 @@ const reducer = (state: State, action: Action) => {
 
 const initialState: State = {
   counter: 0,
+  name: "",
 };
 const store = new RxJsStore(reducer, initialState);
 
-store.subscribe((v) => console.log(v));
+store.select("name").subscribe((value) => console.log("name changed", value));
 
-const { dispatch, asyncDispatch } = store;
+const { dispatch } = store;
 
-asyncDispatch(
-  "INCREMENT",
-  () => new Promise((resolve) => setTimeout(() => resolve(5), 5000))
-);
-dispatch({ type: "INCREMENT", payload: 1 });
-dispatch({ type: "INCREMENT", payload: 1 });
-dispatch({ type: "DECREMENT" });
-dispatch({ type: "INCREMENT", payload: 1 });
-dispatch({ type: "INCREMENT", payload: 1 });
-dispatch({ type: "DECREMENT" });
-dispatch({ type: "INCREMENT", payload: 1 });
-dispatch({ type: "INCREMENT", payload: 1 });
-dispatch({ type: "DECREMENT" });
-dispatch({ type: "INCREMENT", payload: 1 });
-dispatch({ type: "DECREMENT" });
+dispatch({ type: "CHANGE_NAME", payload: "Rogerio" });
+dispatch({ type: "CHANGE_NAME", payload: "Beatriz" });
+dispatch({ type: "INCREMENT", payload: 2 });
