@@ -14,7 +14,7 @@ const reducer = (state: State, action: Action) => {
       return { ...state, counter: state.counter + action.payload };
     }
     case "DECREMENT": {
-      return { ...state, counter: state.counter + 1 };
+      return { ...state, counter: state.counter - action.payload };
     }
     default:
       return state;
@@ -28,9 +28,15 @@ const initialState: State = {
 const store = new RxJsStore(reducer, initialState);
 
 store.select("name").subscribe((value) => console.log("name changed", value));
+store
+  .select("counter")
+  .subscribe((value) => console.log("counter changed", value));
+const { dispatch, asyncDispatch } = store;
 
-const { dispatch } = store;
-
-dispatch({ type: "CHANGE_NAME", payload: "Rogerio" });
-dispatch({ type: "CHANGE_NAME", payload: "Beatriz" });
-dispatch({ type: "INCREMENT", payload: 2 });
+asyncDispatch<number>(
+  "DECREMENT",
+  () => new Promise((resolve) => setTimeout(() => resolve(5), 5000))
+);
+dispatch({ type: "CHANGE_NAME", payload: "First Name" });
+dispatch({ type: "CHANGE_NAME", payload: "Second Name" });
+dispatch({ type: "INCREMENT", payload: 5 });

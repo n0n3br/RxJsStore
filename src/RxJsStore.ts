@@ -1,11 +1,9 @@
 import {
   BehaviorSubject,
-  distinctUntilChanged,
   distinctUntilKeyChanged,
   Observable,
-  Observer,
-  of,
   pluck,
+  Subscription,
 } from "rxjs";
 export interface Action {
   type: string;
@@ -25,7 +23,7 @@ export default class RxJsStore<T> {
     return this._state.pipe(distinctUntilKeyChanged(key), pluck(key));
   }
 
-  subscribe(callback: (state: T) => void) {
+  subscribe(callback: (state: T) => void): Subscription {
     return this._state.subscribe(callback);
   }
 
@@ -35,8 +33,12 @@ export default class RxJsStore<T> {
     this._state.next(newState);
   };
 
-  asyncDispatch = async (type: string, runner: (state: T) => Promise<any>) => {
-    const payload = await runner(this._state.getValue());
+  asyncDispatch = async <R>(
+    type: string,
+    runner: (state: T) => Promise<R>
+  ): Promise<void> => {
+    const currentState = this._state.getValue();
+    const payload = await runner(currentState);
     this.dispatch({ type, payload });
   };
 }
