@@ -10,7 +10,7 @@ export interface Action {
   payload?: any;
 }
 
-export default class RxJsStore<T> {
+export class Store<T> {
   private _state: BehaviorSubject<T>;
   private _reducer: (state: T, action: Action) => T;
 
