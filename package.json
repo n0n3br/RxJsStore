@@ -1,18 +1,29 @@
 {
   "name": "rxjs-store",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha --require ts-node/register src/**/*.test.ts"
+  "description": "State management store writen on top of RxJs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n0n3br/RxJsStore"
   },
-  "author": "",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "build": "npm run test && npm run del-dist && tsc",
+    "test": "mocha --require ts-node/register src/**/*.test.ts",
+    "del-dist": "rimraf dist"
+  },
+  "author": "rogeriol@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@types/chai": "^4.2.21",
     "@types/mocha": "^9.0.0",
     "chai": "^4.3.4",
     "mocha": "^9.1.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   },
