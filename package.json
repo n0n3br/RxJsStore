@@ -1,6 +1,6 @@
 {
-  "name": "rxjs-store",
-  "version": "1.0.0",
+  "name": "@n0n3br/rxjs-store",
+  "version": "0.0.1",
   "description": "State management store writen on top of RxJs",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,6 +10,12 @@
   },
   "files": [
     "./dist"
+  ],
+  "keywords": [
+    "javascript",
+    "state management",
+    "store",
+    "reactive"
   ],
   "scripts": {
     "build": "npm run test && npm run del-dist && tsc",
