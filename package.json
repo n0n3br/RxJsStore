@@ -12,6 +12,9 @@
     "./dist/RxJsStore.js",
     "./dist/RxJsStore.d.ts"
   ],
+  "np": {
+    "contents": "dist"
+  },
   "keywords": [
     "javascript",
     "state management",
@@ -22,7 +25,8 @@
     "prepublish": "tsc",
     "build": "npm run test && npm run del-dist && tsc",
     "test": "mocha --require ts-node/register src/**/*.test.ts",
-    "del-dist": "rimraf dist"
+    "del-dist": "rimraf dist",
+    "publish": "npm run del-dist && tsc && np"
   },
   "author": "rogeriol@gmail.com",
   "license": "ISC",
