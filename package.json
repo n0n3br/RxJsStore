@@ -9,7 +9,8 @@
     "url": "https://github.com/n0n3br/RxJsStore"
   },
   "files": [
-    "./dist"
+    "./dist/RxJsStore.js",
+    "./dist/RxJsStore.d.ts"
   ],
   "keywords": [
     "javascript",
