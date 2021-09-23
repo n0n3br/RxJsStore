@@ -9,11 +9,10 @@
     "url": "https://github.com/n0n3br/RxJsStore"
   },
   "files": [
-    "./dist/RxJsStore.js",
-    "./dist/RxJsStore.d.ts"
+    "dist"
   ],
-  "np": {
-    "contents": "dist"
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "javascript",

@@ -10,7 +10,7 @@ export interface Action {
   payload?: any;
 }
 
-export class Store<T> {
+export class Storen<T> {
   private _state: BehaviorSubject<T>;
   private _reducer: (state: T, action: Action) => T;
 
