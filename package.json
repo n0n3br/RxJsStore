@@ -12,6 +12,9 @@
     "./dist/RxJsStore.js",
     "./dist/RxJsStore.d.ts"
   ],
+  "np": {
+    "contents": "dist"
+  },
   "keywords": [
     "javascript",
     "state management",
