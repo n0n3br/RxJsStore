@@ -12,7 +12,6 @@ The store works with reducers, like Redux, and exposes methods like subscribe, s
 ### Dependencies
 
 - [NodeJS] (https://nodejs.org/en/)
--
 
 ### Installing
 
@@ -83,7 +82,11 @@ store.asyncDispatch(
 );
 ```
 
-## Building for production
+## Contributing
+
+Pull requests are welcome. 
+
+### Building for production
 
 To run the production build use nodejs build script:
 
@@ -93,7 +96,7 @@ npm run build
 
 Before the build is actually made the tests will be executed, the dist folder will be removed and then the build will be made.
 
-## Running tests
+### Running tests
 
 This library contains all tests in the ./src/RxJsStore.test.ts.
 
@@ -104,9 +107,4 @@ To run the tests just use nodejs test script:
 ```javascript
 npm run test
 ```
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
 Please make sure to update tests as appropriate.
