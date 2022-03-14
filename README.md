@@ -78,7 +78,7 @@ store.dispatch({ type: "INCREMENT", payload: 0 });
 // using setTimeout to simulate a promise that will be resolved after 1 second
 store.asyncDispatch(
   "DECREMENT",
-  () => new Promise((resolve) => setTimeout(() => resolve(5)), 1000)
+  () => new Promise((resolve) => setTimeout(() => resolve(5), 1000))
 );
 ```
 
