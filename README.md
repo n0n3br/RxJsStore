@@ -45,8 +45,8 @@ yarn add @n0n3br/rxjs-store
   }
   const reducer = (state, action:Action):State => {
       switch(action.type) {
-          case 'INCREMENT': return { ...state, counter: state.counter + (payload ?? 0) }
-          case 'DECREMENT': return { ...state, counter: state.counter - (payload ?? 0) }
+          case 'INCREMENT': return { ...state, counter: state.counter + (action.payload ?? 0) }
+          case 'DECREMENT': return { ...state, counter: state.counter - (action.payload ?? 0) }
           default: return state
       }
   }
